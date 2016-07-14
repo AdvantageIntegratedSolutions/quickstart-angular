@@ -1,5 +1,3 @@
-//https://angular.io/docs/ts/latest/guide/style-guide.html#!#components
-
 class HeroesCtrl {
   constructor($q, $scope, quickbase) {
     this.$q = $q;
