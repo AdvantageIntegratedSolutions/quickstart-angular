@@ -1,0 +1,19 @@
+<div>
+  <h2>Heroes</h2>
+  <table class="table">
+  	<thead>
+  		<th>Hero Name</th>
+  		<th>Real Name</th>
+  		<th>Main Power</th>
+  	</thead>
+  	<tbody>
+    	<tr ng-repeat="hero in heroes">
+    		<td>
+    			<span class="label label-success">{{ hero.heroName }}</span>
+    		</td>
+    		<td>{{ hero.realName }}</td>
+    		<td>{{ hero.mainPower }}</td>
+    	</tr>
+    </tbody>
+  </table>
+</div>

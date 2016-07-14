@@ -1,0 +1,19 @@
+<div>
+  <h2>Villains</h2>
+  <table class="table">
+  	<thead>
+  		<th>Villain Name</th>
+  		<th>Nemesis</th>
+  		<th>Main Power</th>
+  	</thead>
+  	<tbody>
+    	<tr ng-repeat="villain in villains">
+    		<td>
+    			<span class="label label-danger">{{ villain.name }}</span>
+    		</td>
+    		<td>{{ villain.nemesis }}</td>
+    		<td>{{ villain.mainPower }}</td>
+    	</tr>
+    </tbody>
+  </table>
+</div>
