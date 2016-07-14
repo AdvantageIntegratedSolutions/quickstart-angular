@@ -3,7 +3,6 @@ import HeroService from './hero.service';
 
 angular
   .module('app.heroes', [])
-
   .config(($stateProvider) => {
     $stateProvider
       .state('app.heroes', {
