@@ -1,6 +1,7 @@
 import "../tmp/templates";
 import "./layout";
 import "./shared";
+import "./dashboard";
 import "./examples/heroes"; //example components
 import "./examples/villains"; //example components
 
@@ -9,6 +10,7 @@ const DEPENDENCIES = [
   'templates',
   'app.layout',
   'app.shared',
+  'app.dashboard',
   'app.heroes', //example component
   'app.villains', //example component
 ];
@@ -22,7 +24,7 @@ angular
         templateUrl: 'layout/app-layout.html'
       })
 
-    $urlRouterProvider.otherwise('/heroes');
+    $urlRouterProvider.otherwise('/');
   })
   .run($rootScope => {
     // Change page title based on state
