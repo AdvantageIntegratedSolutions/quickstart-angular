@@ -1,17 +1,16 @@
 import "../tmp/templates";
 import "./layout";
 import "./shared";
-
-import "./heroes"; //example feature
-import "./villains"; //example feature
+import "./examples/heroes"; //example components
+import "./examples/villains"; //example components
 
 const DEPENDENCIES = [
   'ui.router',
   'templates',
   'app.layout',
   'app.shared',
-  'app.heroes', //example feature
-  'app.villains', //example feature
+  'app.heroes', //example component
+  'app.villains', //example component
 ];
 
 angular

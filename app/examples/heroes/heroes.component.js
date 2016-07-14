@@ -20,6 +20,6 @@ class HeroesCtrl {
 }
 
 export default {
-  templateUrl: 'heroes/heroes.component.html',
+  templateUrl: 'examples/heroes/heroes.component.html',
   controller: HeroesCtrl
 }

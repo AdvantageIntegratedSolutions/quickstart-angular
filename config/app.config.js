@@ -1,9 +1,9 @@
 module.exports = {
-  name: "QuickStartHeroesVsVillains",
+  name: "quickstart-angular",
   description: "",
-  client: "Advantage",
+  client: "ais",
   username: "kith",
-  origin: "https://github.com/AdvantageIntegratedSolutions/quickstart.git",
+  origin: "https://github.com/AdvantageIntegratedSolutions/quickstart-angular.git",
   authors: ["cjett@advantagequickbase.com", "khensel@advantagequickbase.com"],
   bootstrap: "./app/main.js",
   timezone: "mountain"

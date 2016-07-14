@@ -21,6 +21,6 @@ class VillainsCtrl {
 
 export default {
   bindings: { score: '=' },
-  templateUrl: 'villains/villains.component.html',
+  templateUrl: 'examples/villains/villains.component.html',
   controller: VillainsCtrl
 }
