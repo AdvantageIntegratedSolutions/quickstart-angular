@@ -1,8 +1,9 @@
-var quickstart = require('../../quickstart.config.js');
+var app = require('../../config/app.config.js');
+var quickbase = require('../../config/quickbase.config.js');
 
-const db = new Base(quickstart.baseConfig);
+const db = new Base(quickbase);
 window.db = db;
 
-BaseHelpers.options.timeZone = quickstart.timezone;
+BaseHelpers.options.timeZone = app.timezone;
 
 export default db;

@@ -7,7 +7,7 @@ var notify = require('gulp-notify');
 var replace = require('gulp-replace');
 
 var paths = require('../paths');
-var app = require(paths.app);
+var quickbase = require(paths.quickbase);
 
 // push to QuickBase App
 gulp.task('upload-html', ['upload-assets'], function() {
@@ -42,13 +42,13 @@ gulp.task('upload-assets', ['js-prod', 'css-prod', 'html-prod'], function() {
 function buildVar(contents){
   var data = [];
   data.push("<qdbapi>");
-  data.push.apply(data, ["<apptoken>", handleXMLChars(app.baseConfig.token), "</apptoken>"]);
-  data.push.apply(data, ["<username>", handleXMLChars(app.username), "</username>"]);
+  data.push.apply(data, ["<apptoken>", handleXMLChars(quickbase.token), "</apptoken>"]);
+  data.push.apply(data, ["<username>", handleXMLChars(quickbase.username), "</username>"]);
 
   var password = process.env.GULPPASSWORD;
-  if(app.password){
-    password = app.password;
-  }
+  if(quickbase.password){
+    password = quickbase.password;
+  };
 
   data.push.apply(data, ["<password>", handleXMLChars(password), "</password>"]);
   data.push.apply(data, ["<hours>", "1", "</hours>"]);
@@ -62,13 +62,13 @@ function buildVar(contents){
 function buildPage(body, name){
   var data = [];
   data.push("<qdbapi>");
-  data.push.apply(data, ["<apptoken>", handleXMLChars(app.baseConfig.token), "</apptoken>"]);
-  data.push.apply(data, ["<username>", handleXMLChars(app.username), "</username>"]);
+  data.push.apply(data, ["<apptoken>", handleXMLChars(quickbase.token), "</apptoken>"]);
+  data.push.apply(data, ["<username>", handleXMLChars(quickbase.username), "</username>"]);
 
   var password = process.env.GULPPASSWORD;
-  if(app.password){
-    password = app.password;
-  }
+  if(quickbase.password){
+    password = quickbase.password;
+  };
 
   data.push.apply(data, ["<password>", handleXMLChars(password), "</password>"]);
   data.push.apply(data, ["<hours>", "1", "</hours>"]);
@@ -95,9 +95,9 @@ function handleXMLChars(string){
 
 function sendQBRequest(action, data, mainAPICall){
   var req = new XMLHttpRequest();
-  var dbid = mainAPICall ? "main" : app.baseConfig.databaseId;
+  var dbid = mainAPICall ? "main" : quickbase.databaseId;
 
-  var url = "https://" + app.baseConfig.realm + ".quickbase.com/db/" + dbid + "?act=" + action;
+  var url = "https://" + quickbase.realm + ".quickbase.com/db/" + dbid + "?act=" + action;
   req.open("POST", url, true);
   req.setRequestHeader("Content-Type", "text/xml");
   req.send(data);
