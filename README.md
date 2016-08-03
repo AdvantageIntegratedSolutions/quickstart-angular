@@ -10,7 +10,7 @@ quickstart is an local development environment and deployment tool for QuickBase
 * Create new repo on Github.
 * Clone 'quickstart' repo.
 ```shell
-  git clone https://github.com/AdvantageIntegratedSolutions/quickstart.git <NEW APP NAME>
+  git clone https://github.com/AdvantageIntegratedSolutions/quickstart-angular.git <NEW APP NAME>
 ```
 
 * Update the git origin remote with your app's repo url.
