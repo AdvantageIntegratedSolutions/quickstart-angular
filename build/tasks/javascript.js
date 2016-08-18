@@ -14,6 +14,7 @@ var notify = require('gulp-notify');
 
 var paths = require('../paths');
 var app = require(paths.app);
+var quickbase = require(paths.quickbase);
 
 function interceptErrors(error) {
   var args = Array.prototype.slice.call(arguments);
@@ -27,6 +28,17 @@ function interceptErrors(error) {
   // Keep gulp from hanging on this task
   this.emit('end');
 };
+
+gulp.task('add-auth-to-local', ['js-dev'], function(){
+  var password = process.env.GULPPASSWORD;
+  if(quickbase.password){
+    password = quickbase.password;
+  };
+
+  return gulp.src(paths.outputDev + '/bundle.js')
+    .pipe(inject.before('databaseId:', 'username: \"'+quickbase.username+'\",\n password: \"'+password+'\",\n realm: \"'+quickbase.realm+'\",\n\t'))
+    .pipe(gulp.dest(paths.outputDev));
+});
 
 gulp.task('js-dev', ['templates'], function(){
   return browserify(app.bootstrap, {debug: true})

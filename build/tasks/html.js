@@ -7,6 +7,7 @@ var htmlmin = require('gulp-htmlmin');
 
 var paths = require('../paths');
 var app = require(paths.app);
+var quickbase = require(paths.quickbase);
 
 gulp.task('html-dev', function() {
   return gulp.src(paths.html)
@@ -14,7 +15,7 @@ gulp.task('html-dev', function() {
 });
 
 gulp.task('html-prod', ['js-prod', 'css-prod'], function() {
-	var pageUrl = 'https://'+app.baseConfig.realm+'.quickbase.com/db/'+app.baseConfig.databaseId+'?a=dbpage&pagename='+app.name+'-bundle.'
+	var pageUrl = 'https://'+quickbase.realm+'.quickbase.com/db/'+quickbase.databaseId+'?a=dbpage&pagename='+app.name+'-bundle.'
 
   return gulp.src(paths.html)
   	.pipe(replace(/bundle\.js/, pageUrl + 'js'))

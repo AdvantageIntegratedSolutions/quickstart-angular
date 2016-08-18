@@ -11,7 +11,7 @@ var app = require(paths.app);
 
 var htmlTasks = [ 'html-dev', browserSync.reload ];
 var templateTasks = [ 'templates', 'js-dev', 'html-dev', browserSync.reload ];
-var jsTasks = [ 'js-dev', browserSync.reload ];
+var jsTasks = [ 'js-dev', 'add-auth-to-local', browserSync.reload ];
 var cssTasks = [ 'css-dev' ];
 
 function interceptErrors(error) {
@@ -29,7 +29,7 @@ function interceptErrors(error) {
 
 gulp.task('watch', ['local']);
 
-gulp.task('local', ['html-dev', 'templates', 'css-dev', 'js-dev'], function() {
+gulp.task('local', ['html-dev', 'templates', 'css-dev', 'js-dev', 'add-auth-to-local'], function() {
   browserSync.init({
     open: true,
     notify: false,
@@ -48,5 +48,5 @@ gulp.task('css-dev', function() {
     .on('error', interceptErrors)
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest(paths.outputDev))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream({ match: '**/*.css' }));
 });
