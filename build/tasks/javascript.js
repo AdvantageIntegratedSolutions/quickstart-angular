@@ -1,10 +1,10 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
 var inject = require('gulp-inject-string');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
+// var buffer = require('vinyl-buffer');
 var notify = require('gulp-notify');
 
 var paths = require('../paths');
@@ -37,7 +37,7 @@ gulp.task('add-auth-to-local', ['js-dev'], function(){
 
 gulp.task('js-dev', ['templates'], function(){
   return browserify(app.bootstrap, {debug: true})
-    .transform('babelify', {presets: ['es2015']})
+    .transform(babelify, {presets: ['es2015']})
     .bundle()
     .on('error', interceptErrors)
     .pipe(source('bundle.js'))
@@ -46,12 +46,12 @@ gulp.task('js-dev', ['templates'], function(){
 
 gulp.task('js-prod', ['templates'], function(){
   return browserify(app.bootstrap)
-    .transform('babelify', {presets: ['es2015']})
+    .transform(babelify, {presets: ['es2015']})
     .bundle()
     .on('error', interceptErrors)
     .pipe(source(app.name + '-bundle.js'))
-    .pipe(buffer())
-    .pipe(uglify())
+    // .pipe(buffer())
+    // .pipe(uglify())
     .pipe(gulp.dest(paths.outputProd));
 });
 
