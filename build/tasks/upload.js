@@ -4,7 +4,6 @@ var XML = require('pixl-xml');
 var foreach = require('gulp-foreach');
 var path = require('path');
 var notify = require('gulp-notify');
-var replace = require('gulp-replace');
 
 var paths = require('../paths');
 var quickbase = require(paths.quickbase);

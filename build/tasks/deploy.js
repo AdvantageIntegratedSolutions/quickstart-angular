@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var insert = require('gulp-insert');
 

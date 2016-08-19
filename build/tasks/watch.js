@@ -3,7 +3,6 @@ var browserSync = require('browser-sync').create();
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
-var insert = require('gulp-insert');
 var notify = require('gulp-notify');
 
 var paths = require('../paths');
