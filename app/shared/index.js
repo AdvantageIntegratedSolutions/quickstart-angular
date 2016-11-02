@@ -5,5 +5,11 @@ angular
   .module('app.shared', [])
   .run($rootScope => {
     $rootScope.clientDisplayName = appConfig.client;
+    // Logo spec
+    $rootScope.appLogo = quickstartConfig.appLogo;
+    let alt = $rootScope.appLogo.dashboardAlt;
+    $rootScope.appLogo.dashboardAlt = alt ? alt : quickstartConfig.client;
+    let icon = $rootScope.appLogo.iconUrl;
+    $rootScope.appLogo.iconUrl = icon ? icon : $rootScope.appLogo.dashboardUrl;
   })
   .constant('quickbase', quickbase)
