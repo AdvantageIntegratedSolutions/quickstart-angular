@@ -4,7 +4,8 @@ import quickbase from './quickbase-client';
 angular
   .module('app.shared', [])
   .run($rootScope => {
-    $rootScope.clientDisplayName = appConfig.client;
+    let name = appConfig.clientDisplayName;
+    $rootScope.clientDisplayName = name ? name : appConfig.client;
     // Logo spec
     $rootScope.appLogo = quickstartConfig.appLogo;
     let alt = $rootScope.appLogo.dashboardAlt;
