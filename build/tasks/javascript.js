@@ -11,9 +11,20 @@ var htmlmin = require('gulp-htmlmin');
 var browserSync = require('../lib/browser-sync');
 var interceptErrors = require('../lib/intercept-errors');
 var quickbaseConfig = require('../../config/quickbase.config');
+var appConfig = require('../../config/app.config');
 
 gulp.task('js-dev', ['templates'], function () {
   return bundleJavascript();
+});
+
+gulp.task('js-prod', ['templates'], function() {
+  return browserify('./app/main.js')
+    .transform(babelify, {presets: ['es2015']})
+    .bundle()
+    .on('error', interceptErrors)
+    .pipe(source(appConfig.name + '-bundle.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('templates', function() {
@@ -27,12 +38,13 @@ gulp.task('templates', function() {
 });
 
 watchify.args.debug = true;
+
 var bundler = watchify(browserify('./app/main.js', watchify.args));
 bundler.transform(babelify, {presets: ['es2015']});
 bundler.on('update', bundleJavascript);
 
 function bundleJavascript() {
-  console.log('\tCompiling JS...');
+  console.log('\t   Compiling JS...');
 
   var password = quickbaseConfig.password ? quickbaseConfig.password : process.env.GULPPASSWORD;
   var injectedPasswordString = 'password: \"' + password + '\",\n';

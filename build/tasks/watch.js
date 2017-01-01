@@ -3,8 +3,8 @@ var del = require('del');
 
 var browserSync = require('../lib/browser-sync');
 
-gulp.task('watch', ['local']);
-gulp.task('local', ['clean-dev', 'html-dev', 'css-dev', 'js-dev'], function () {
+gulp.task('local', ['watch']);
+gulp.task('watch', ['clean-dev', 'html-dev', 'css-dev', 'js-dev'], function () {
   browserSync.init({
     open: false,
     reloadOnRestart: true,
@@ -17,5 +17,5 @@ gulp.task('local', ['clean-dev', 'html-dev', 'css-dev', 'js-dev'], function () {
 });
 
 gulp.task('clean-dev', function() {
-  return del('./tmp/**/*')
+  return del('./tmp/**/*');
 });
