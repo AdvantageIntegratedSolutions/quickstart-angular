@@ -1,51 +1,21 @@
-// var gulp = require('gulp');
-// var browserSync = require('browser-sync').create();
-// var gulp = require('gulp');
-// var sass = require('gulp-sass');
-// var concat = require('gulp-concat');
-// var notify = require('gulp-notify');
-//
-// var paths = require('../paths');
-// var app = require(paths.app);
-//
-// var htmlTasks = [ 'html-dev', browserSync.reload ];
-// var templateTasks = [ 'templates', 'js-dev', 'html-dev', browserSync.reload ];
-// var jsTasks = [ 'js-dev', 'add-auth-to-local', browserSync.reload ];
-// var cssTasks = [ 'css-dev' ];
-//
-// function interceptErrors(error) {
-//   var args = Array.prototype.slice.call(arguments);
-//
-//   // Send error to notification center with gulp-notify
-//   notify.onError({
-//     title: 'Compile Error',
-//     message: '<%= error.message %>'
-//   }).apply(this, args);
-//
-//   // Keep gulp from hanging on this task
-//   this.emit('end');
-// };
-//
-// gulp.task('watch', ['local']);
-//
-// gulp.task('local', ['html-dev', 'templates', 'css-dev', 'js-dev', 'add-auth-to-local'], function() {
-//   browserSync.init({
-//     open: true,
-//     notify: false,
-//     server: paths.outputDev
-//   });
-//
-//   gulp.watch(paths.html, htmlTasks);
-//   gulp.watch(paths.templates, templateTasks);
-//   gulp.watch(paths.javascript, jsTasks);
-//   gulp.watch(paths.css, cssTasks);
-// });
-//
-// gulp.task('css-dev', function() {
-//   return gulp.src(paths.css)
-//     .pipe(sass())
-//     .on('error', interceptErrors)
-//     .pipe(concat('bundle.css'))
-//     .pipe(gulp.dest(paths.outputDev))
-//     .pipe(browserSync.stream({ match: '**/*.css' }));
-// });
+var gulp = require('gulp');
+var del = require('del');
+
+var browserSync = require('../lib/browser-sync');
+
+gulp.task('watch', ['local']);
+gulp.task('local', ['clean-dev', 'html-dev', 'css-dev', 'js-dev'], function () {
+  browserSync.init({
+    open: false,
+    reloadOnRestart: true,
+    server: './tmp',
+    notify: false
+  });
+
+  gulp.watch('./app/**/!(index).html', ['templates'], browserSync.reload);
+  gulp.watch('./app/**/*.{css,scss,sass}', ['css-dev']);
+});
+
+gulp.task('clean-dev', function() {
+  return del('./tmp/**/*')
+});

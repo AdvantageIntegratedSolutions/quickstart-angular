@@ -1,39 +1,6 @@
-// var gulp = require('gulp');
-// var insert = require('gulp-insert');
-// var rename = require('gulp-rename');
-// var replace = require('gulp-replace');
-// var templateCache = require('gulp-angular-templatecache');
-// var htmlmin = require('gulp-htmlmin');
-//
-// var paths = require('../paths');
-// var app = require(paths.app);
-// var quickbase = require(paths.quickbase);
-//
-// gulp.task('html-dev', function() {
-//   return gulp.src(paths.html)
-//     .pipe(gulp.dest(paths.outputDev));
-// });
-//
-// gulp.task('html-prod', ['js-prod', 'css-prod'], function() {
-// 	var pageUrl = 'https://'+quickbase.realm+'.quickbase.com/db/'+quickbase.databaseId+'?a=dbpage&pagename='+app.name+'-bundle.'
-//
-//   return gulp.src(paths.html)
-//   	.pipe(replace(/bundle\.js/, pageUrl + 'js'))
-//     .pipe(replace(/bundle\.css/, pageUrl + 'css'))
-//     .pipe(rename(function (path) {
-//       path.basename = app.name + "-" + path.basename;
-//       path.dirname = "";
-//     }))
-//     .pipe(insert.prepend('<!-- '+app.origin+' -->\n'))
-//     .pipe(gulp.dest(paths.outputProd));
-// });
-//
-// gulp.task('templates', function() {
-//   return gulp.src(paths.templates)
-//     .pipe(htmlmin({collapseWhitespace: true}))
-//     .pipe(templateCache("templates.js", {
-//       module: "templates",
-//       standalone: true
-//     }))
-//     .pipe(gulp.dest('tmp/'));
-// });
+var gulp = require('gulp');
+
+gulp.task('html-dev', function() {
+  return gulp.src('./app/index.html')
+    .pipe(gulp.dest('./tmp'));
+});
