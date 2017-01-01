@@ -2,7 +2,7 @@ module.exports = {
   realm: "ais",
   username: "kith",
   async: "promise",
-  databaseId: "bkuvskxbm",
+  databaseId: "bkyez3kdm",
   token: "b529p7sb9skfggdddr98jds6gaaa",
   tables: {
     heroes: {
@@ -12,7 +12,6 @@ module.exports = {
       realName: 7,
       mainPower: 8
     },
-
     villains: {
       dbid: "bkyez3kjy",
       rid: 3,
