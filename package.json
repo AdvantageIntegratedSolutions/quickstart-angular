@@ -1,6 +1,6 @@
 {
   "name": "quickstart-angular",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "QuickBase automatic build system",
   "engines": {
     "node": "5.5.0",
@@ -22,20 +22,18 @@
     "gulp-clean-css": "^2.3.2",
     "gulp-concat": "^2.6.0",
     "gulp-foreach": "^0.1.0",
-    "gulp-htmlmin": "^2.0.0",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-inject-string": "^1.1.0",
     "gulp-insert": "^0.5.0",
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
-    "gulp-sass": "^2.3.2",
-    "gulp-uglify": "^2.0.0",
-    "pixl-xml": "^1.0.7",
+    "gulp-sass": "^3.0.0",
     "request": "^2.79.0",
     "require-dir": "^0.3.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "xmlhttprequest": "^1.8.0"
+    "watchify": "^3.8.0"
   },
   "dependencies": {}
 }
