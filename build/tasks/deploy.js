@@ -4,16 +4,17 @@ var request = require('request');
 var path = require('path');
 var del = require('del');
 
-var quickbaseConfig = require('../../config/quickbase.config');
+var paths = require('../paths');
+var quickbaseConfig = require(paths.quickbase);
 
 gulp.task('deploy', ['clean-prod', 'upload-to-quickbase']);
 
 gulp.task('clean-prod', function() {
-  return del('./dist/**/*');
+  return del(paths.outputProd);
 });
 
 gulp.task('upload-to-quickbase', ['html-prod', 'css-prod', 'js-prod'], function() {
-  return gulp.src('./dist/*.{html,css,js}')
+  return gulp.src(paths.outputProd + '/*.{html,css,js}')
     .pipe(foreach(function(stream, file){
       var filename = handleXMLChars(path.basename(file.path));
       var contents = handleXMLChars(file.contents.toString());
