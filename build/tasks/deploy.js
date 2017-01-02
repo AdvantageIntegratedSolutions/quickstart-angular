@@ -11,7 +11,7 @@ var QuickbaseApi = require('../lib/api-client');
 gulp.task('deploy', ['clean-prod', 'upload-to-quickbase']);
 
 gulp.task('clean-prod', function() {
-  return del(paths.outputProd);
+  return del.sync(paths.outputProd);
 });
 
 gulp.task('upload-to-quickbase', ['html-prod', 'css-prod', 'js-prod'], function() {
