@@ -1,8 +1,8 @@
 module.exports = {
   realm: "ais",
-  username: "kith",
+  username: "cullenjett",
   async: "promise",
-  databaseId: "bkyez3kdm",
+  databaseId: "bkuvskxbm",
   token: "b529p7sb9skfggdddr98jds6gaaa",
   tables: {
     heroes: {
