@@ -15,6 +15,7 @@ gulp.task('watch', ['clean-dev', 'upload-config', 'html-dev', 'css-dev', 'js-dev
     notify: false
   });
 
+  gulp.watch(paths.html, browserSync.reload);
   gulp.watch(paths.templates, ['templates'], browserSync.reload);
   gulp.watch(paths.css, ['css-dev']);
   gulp.watch('config/quickbase.config.js', ['upload-config']);
@@ -25,7 +26,7 @@ gulp.task('clean-dev', function() {
 });
 
 gulp.task('upload-config', function() {
-  // We have to read the file at runtime instead of using the 'require'ing the file because Node caches that garbage and we need the new changes.
+  // We have to read the file at runtime instead of 'require'ing the file because Node caches that garbage and we need the new changes.
   var config = fs.readFileSync('config/quickbase.config.js', 'utf-8');
   config = eval(config);
 
