@@ -26,16 +26,16 @@ gulp.task('clean-dev', function() {
 });
 
 gulp.task('upload-config', function() {
-  // We have to read the file at runtime instead of 'require'ing the file because Node caches that garbage and we need the new changes.
-  var config = fs.readFileSync('config/quickbase.config.js', 'utf-8');
-  config = eval(config);
+  // We have to delete the cached version of the config and read it at runtime.
+  delete require.cache[require.resolve(paths.quickbase)];
+  var quickbaseConfig = require(paths.quickbase);
 
-  var configCopy = JSON.parse(JSON.stringify(config))
+  var configCopy = JSON.parse(JSON.stringify(quickbaseConfig))
   configCopy.password = configCopy.password || process.env.GULPPASSWORD;
 
   var quickbaseClient = new QuickbaseApi(configCopy);
 
-  quickbaseClient.uploadVariable(JSON.stringify(config))
+  quickbaseClient.uploadVariable(JSON.stringify(quickbaseConfig))
     .then(res => console.log(`\t   Config variable uploaded`))
     .catch(err => console.error(`\t   Error uploading config variable:\n${err}`));
 
