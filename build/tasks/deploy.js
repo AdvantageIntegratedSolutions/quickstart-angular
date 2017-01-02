@@ -17,7 +17,7 @@ gulp.task('clean-prod', function() {
 gulp.task('upload-to-quickbase', ['html-prod', 'css-prod', 'js-prod'], function() {
   var password = quickbaseConfig.password || process.env.GULPPASSWORD;
   quickbaseConfig.password = password;
-  
+
   var quickbaseClient = new QuickbaseApi(quickbaseConfig);
 
   return gulp.src(paths.outputProd + '/*.{html,css,js}')
@@ -26,8 +26,8 @@ gulp.task('upload-to-quickbase', ['html-prod', 'css-prod', 'js-prod'], function(
       var contents = file.contents.toString();
 
       quickbaseClient.uploadPage(filename, contents)
-        .then(res => console.log("File uploaded:", filename))
-        .catch(err => console.error(`Error uploading ${filename}:\n${err}`))
+        .then(res => console.log("\t   File uploaded:", filename))
+        .catch(err => console.error(`\t   Error uploading ${filename}:\n${err}`))
 
       return stream;
     }));

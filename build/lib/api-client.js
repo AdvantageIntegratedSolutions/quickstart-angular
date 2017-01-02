@@ -17,6 +17,19 @@ module.exports = class ApiClient {
     return this.sendQbRequest('API_AddReplaceDBPage', xmlData)
   }
 
+  uploadVariable(contents) {
+    let varName = "quickstart_config"
+
+    let xmlData = `
+      <varname>${varName}</varname>
+      <value>${this.handleXMLChars(contents)}</value>
+    `
+
+    return this.sendQbRequest('API_SetDBvar', xmlData)
+  }
+
+  // Private-ish
+
   handleXMLChars(string) {
     if (!string) {
       return
