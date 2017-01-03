@@ -12,7 +12,8 @@ gulp.task('watch', ['clean-dev', 'upload-config', 'html-dev', 'css-dev', 'js-dev
     open: false,
     reloadOnRestart: true,
     server: paths.outputDev,
-    notify: false
+    notify: false,
+    ui: false
   });
 
   gulp.watch(paths.html, ['html-dev'], browserSync.reload);
