@@ -15,9 +15,7 @@ gulp.task('watch', ['clean-dev', 'upload-config', 'html-dev', 'css-dev', 'js-dev
     notify: false
   });
 
-  // gulp.watch(paths.html, ['html-dev']).on('change', browserSync.reload);
   gulp.watch(paths.html, ['html-dev'], browserSync.reload);
-  // gulp.watch(paths.templates, ['templates']).on('change', browserSync.reload);
   gulp.watch(paths.templates, ['templates'], browserSync.reload);
   gulp.watch(paths.css, ['css-dev']);
   gulp.watch('config/quickbase.config.js', ['upload-config']);
