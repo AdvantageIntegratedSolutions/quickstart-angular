@@ -52,7 +52,7 @@ module.exports = class ApiClient {
         <username>${this.config.username}</username>
         <password>${this.config.password}</password>
         <hours>1</hours>
-        <apptoken>${this.config.appToken}</apptoken>
+        <apptoken>${this.config.apptoken}</apptoken>
         ${data}
       </qdbapi>
     `
