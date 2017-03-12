@@ -1,6 +1,4 @@
 module.exports = {
-  realm: "ais",
-  username: "cullenjett",
   async: "promise",
   databaseId: "bkuvskxbm",
   token: "b529p7sb9skfggdddr98jds6gaaa",
