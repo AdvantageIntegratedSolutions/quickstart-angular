@@ -1,14 +1,2 @@
-/*
-  gulpfile.js
-  ===========
-  Rather than manage one giant configuration file responsible
-  for creating multiple tasks, each task has been broken out into
-  its own file in build/tasks. Any files in that directory get
-  automatically required below.
-  To add a new task, simply add a new task file that directory.
-*/
-
-var requireDir = require('require-dir');
-
-// Require all tasks in build/tasks, including subfolders
-requireDir('./build/tasks', { recurse: true });
+const gulp = require('gulp');
+require("./node_modules/@advantage/quickstart-build/src/tasks/")(gulp);
