@@ -70,6 +70,10 @@ All development has to be done inside the app/ directory, otherwise there are no
 |   +-- index.html ( duh )
 |   +-- main.js
 |   +-- main.scss
++-- config
+|   +-- app.config.js (store app settings)
+|   +-- auth.config.js (store quickbase authentication incl realm, username, password, token)
+|   +-- quickbase.config.js (store base.js config, tables, etc)
 +-- tmp
 |   +-- bundle.css ( compiled styles for local )
 |   +-- bundle.js ( compiled js for local )
