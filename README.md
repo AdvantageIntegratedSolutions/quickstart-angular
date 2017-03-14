@@ -19,14 +19,7 @@ quickstart is a local development environment and deployment tool for QuickBase.
 ```
 * Run `npm install`
 
-* Update configuration in quickstart.config.js.
-
-## Password Management
-Set the "GULPPASSWORD" ENV variable to avoid committing password. Simply keep the password value empty in app.json or remove it.
-
-```shell
-  sudo vi ~/.bash_profile; export GULPPASSWORD=PASSWORD;
-```
+* Update configuration in config folder.
 
 ## Local Development
 Start up a local server on "localhost:3000" with "gulp local" or "gulp watch".
